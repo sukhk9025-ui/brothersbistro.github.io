@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brother's Bistro - Official Menu</title>
+    <style>
+        /* Chalkboard & Modern Dark Theme */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 80px; /* Header space */
+        }
+        
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            border-bottom: 3px solid #ff9f43;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+        
+        /* Neon Chalkboard Style Logo */
+        .logo-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+            border: 2px solid #ff9f43;
+            padding: 6px 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 8px rgba(255, 159, 67, 0.4);
+        }
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ff9f43;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff9f43;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #1e1e1e;
+            border: 2px dashed #ff9f43;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.8);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ff9f43;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .section {
+            margin-bottom: 45px;
+            padding: 25px 0;
+            border-bottom: 1px dashed #444;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 22px;
+            color: #ffb061;
+            border-left: 4px solid #ff9f43;
+            padding-left: 12px;
+            margin-bottom: 20px;
+            margin-top: 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 600px) {
+            .menu-grid { grid-template-columns: 1fr; }
+            nav ul { gap: 12px; }
+            nav ul li a { font-size: 14px; }
+            .logo-text { font-size: 16px; }
+            .logo-box { padding: 4px 10px; }
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #262626;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        .item-name {
+            font-weight: bold;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .item-price {
+            color: #ff9f43;
+            font-weight: bold;
+        }
+
+        /* Animated Badge Styling */
+        .badge-new {
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            animation: blink 1.2s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* About, Visit, Contact Styling */
+        .about-text {
+            line-height: 1.8;
+            color: #ccc;
+            text-align: center;
+            font-size: 16px;
+        }
+        .info-box {
+            text-align: center;
+            font-size: 16px;
+            line-height: 2;
+            color: #ddd;
+        }
+        .info-box strong {
+            color: #ff9f43;
+        }
+        .maps-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #54a0ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .maps-link:hover { text-decoration: underline; }
+
+        /* Action Buttons */
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 25px auto 10px auto;
+            max-width: 320px;
+            transition: background 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover { background-color: #1ed760; }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #222;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="nav-container">
+            <!-- 🌟 LOGO SECTION 🌟 -->
+            <div class="logo-box">
+                <div class="logo-text">Brother's Bistro</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#visit">Visit</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- MENU SECTION -->
+        <div id="menu" class="section">
+            <h2>Our Menu</h2>
+            
+            <!-- Burger -->
+            <div class="section-title">BURGER</div>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Aaloo Tikki Burger</span><span class="item-price">₹40</span></div>
+                <div class="menu-item"><span class="item-name">Veg Paneer Burger</span><span class="item-price">₹60</span></div>
+                <div class="menu-item"><span class="item-name">Cream Noodle Burger</span><span class="item-price">₹50</span></div>
+                <div class="menu-item"><span class="item-name">Egg Burger</span><span class="item-price">₹50</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Burger</span><span class="item-price">₹70</span></div>
+            </div>
+
+            <!-- Momos -->
+            <div class="section-title">MOMOS</div>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">Veg Steam Momos</span><span class="item-price">₹40</span></div>
+                <div class="menu-item"><span class="item-name">Veg Fry Momos</span><span class="item-price">₹50</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Steam Momos</span><span class="item-price">₹60</span></div>
+                <div class="menu-item"><span class="item-name">Chicken Fry Momos</span><span class="item-price">₹70</span></div>
+            </div>
+
+            <!-- Snacks -->
+            <div class="section-title">SNACKS</div>
+            <div class="menu-grid">
+                <div class="menu-item"><span class="item-name">French Fries</span><span class="item-price">₹50</span></div>
+                <div class="menu-item"><span class="item-name">Mc Smile</span><span class="item-price">₹50</span></div>
+                <div class="menu-item"><span class="item-name">Veggie Finger <span class="badge-new">New</span></span><span class="item-price">₹60</span></div>
+                <div class="menu-item"><span class="item-name">Cheese Corn Roll <span class="badge-new">New</span></span><span class="item-price">₹70</span></div>
+            </div>
+        </div>
+
+        <!-- ABOUT US SECTION -->
+        <div id="about" class="section">
+            <h2>About Us</h2>
+            <p class="about-text">
+                Welcome to <strong>Brother's Bistro</strong>! We serve the most delicious, uncompromised quality burgers, fast food, and crispy snacks in town. Prepared fresh daily with premium ingredients and our secret recipes to bring pure joy to your taste buds.
+            </p>
+        </div>
+
+        <!-- VISIT SECTION (🌟 UPDATED ADDRESS & TIMING 🌟) -->
+        <div id="visit" class="section">
+            <h2>Visit Us</h2>
+            <div class="info-box">
+                <strong>Opening Hours:</strong><br>
+                Everyday: Morning 12:00 PM - Night 8:00 PM<br><br>
+                <strong>Our Address:</strong><br>
+                Sham84 to Hariana Road, Main Bus Stand Kadiana Hoshiarpur, Punjab<br>
+                <a href="https://google.com" target="_blank" class="maps-link">📍 View on Google Maps</a>
+            </div>
+        </div>
+
